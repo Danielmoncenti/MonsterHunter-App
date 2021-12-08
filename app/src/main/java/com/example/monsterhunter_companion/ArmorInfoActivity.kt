@@ -17,5 +17,6 @@ class ArmorInfoActivity : AppCompatActivity() {
         binding.armorRarityInfo.text= intent.getStringExtra("rarity")
         binding.armorDefenseInfo.text= intent.getStringExtra("defense")
         binding.armorMaterialsInfo.text= intent.getStringExtra("materials")
+        binding.armorIconInfo.setImageResource(intent.getIntExtra("image", 0))
     }
 }

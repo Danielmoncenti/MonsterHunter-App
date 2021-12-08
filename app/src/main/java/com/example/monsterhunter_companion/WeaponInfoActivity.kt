@@ -19,8 +19,8 @@ class WeaponInfoActivity(): AppCompatActivity() {
         binding.tvElementalDamageDetails.text = intent.getStringExtra("elemental_damage")
         binding.tvAffiniryDetails.text = intent.getStringExtra("affinity ")
         binding.tvMaterialsDetails.text = intent.getStringExtra("materials")
-
-        //binding.tvImageDetails.setImageResource(intent.getIntExtra())
+        binding.tvImageDetails.setImageResource(intent.getIntExtra("type", 0))
+        binding.tvElementDetails.setImageResource(intent.getIntExtra("element", 0))
 
     }
 }

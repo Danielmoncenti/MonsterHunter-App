@@ -6,6 +6,7 @@ import com.example.monsterhunter_companion.data.Monsters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.monsterhunter_companion.MonsterInfoActivity
@@ -25,12 +26,15 @@ class MonstersRecycleViewAdapter (val context: Context, private val monsters: Li
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val monster = monsters[position]
         holder.name.text= monster.name
+        holder.icon.setImageResource(monster.image)
+
         holder.itemView.setOnClickListener {
             val intent = Intent(this.context, MonsterInfoActivity()::class.java)
             intent.putExtra("name",monster.name)
             intent.putExtra("type",monster.type)
             intent.putExtra("weakness",monster.weakness)
             intent.putExtra("map",monster.map)
+            intent.putExtra("image", monster.image)
             this.context.startActivity(intent)
         }
 
@@ -41,6 +45,7 @@ class MonstersRecycleViewAdapter (val context: Context, private val monsters: Li
     override fun getItemCount(): Int = monsters.size
     inner class ViewHolder(val view: View) :RecyclerView.ViewHolder(view) {
         val name : TextView = view.findViewById(R.id.monster_name)
+        val icon : ImageView = view.findViewById(R.id.monster_icon)
     }
 
 }

@@ -17,5 +17,7 @@ class MonsterInfoActivity : AppCompatActivity() {
         binding.monsterTypeInfo.text= intent.getStringExtra("type")
         binding.monsterWeaknessInfo.text= intent.getStringExtra("weakness")
         binding.monsterMapInfo.text= intent.getStringExtra("map")
+        binding.monsterImageInfo.setImageResource(intent.getIntExtra("image",0))
+
     }
 }

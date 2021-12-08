@@ -7,7 +7,7 @@ class Weapons(
     val name: String,
     val type: String,
     val damage: Int,
-    val element: String,
+    val element: Int,
     val elementDamage: Int,
     val affinity: String,
     val rarity: String,

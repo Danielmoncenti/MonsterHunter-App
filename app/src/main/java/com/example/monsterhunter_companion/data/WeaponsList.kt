@@ -12,7 +12,7 @@ object WeaponsList : ArrayList<Weapons>() {
                 "Espada1",
                 "espada_y_escudo",
                 50,
-                "Fuego",
+                R.drawable.fire_icon,
                 20,
                 "10%",
                 "Rareza 1",
@@ -24,9 +24,11 @@ object WeaponsList : ArrayList<Weapons>() {
             Weapons(
                 "Espada2",
                 "espada_y_escudo",
-                60, "Fuego",
+                60,
+                R.drawable.fire_icon,
                 30,
-                "20%", "Rareza 2",
+                "20%",
+                "Rareza 2",
                 "Kirin",
                 R.drawable.espada_y_escudo
             )
@@ -34,14 +36,14 @@ object WeaponsList : ArrayList<Weapons>() {
         add(
             Weapons(
                 "Gran Espada1",
-                "Gran Espada",
+                "gran_espada",
                 200,
-                "Hielo",
+                R.drawable.ice_icon,
                 50,
                 "-5%",
                 "Rareza 1",
                 "Gran Jagrass",
-                R.drawable.espada_y_escudo
+                R.drawable.gran_espada
             )
         )
     }

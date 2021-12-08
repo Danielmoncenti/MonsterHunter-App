@@ -21,7 +21,7 @@
         android:layout_marginStart="16dp"
         android:text="Nombre"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/monster_image_info" />
 
     <TextView
         android:id="@+id/textView9"
@@ -57,7 +57,7 @@
         android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/monster_image_info" />
 
     <TextView
         android:id="@+id/monster_weakness_info"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/monster_weakness_info" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/monster_image_info"
         android:layout_width="146dp"
         android:layout_height="139dp"
         android:layout_marginTop="16dp"
