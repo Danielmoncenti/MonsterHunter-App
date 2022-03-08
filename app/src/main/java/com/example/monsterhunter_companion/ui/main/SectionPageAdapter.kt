@@ -6,23 +6,31 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.example.monsterhunter_companion.armors.ArmorsFragment
 import com.example.monsterhunter_companion.monsters.MonstersFragment
 import com.example.monsterhunter_companion.weapons.WeaponsFragment
-import com.google.android.material.appbar.AppBarLayout
 import kotlin.IllegalStateException
 
 
-class SectionPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class SectionPageAdapter(fm: FragmentManager) :
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+
+    companion object {
+        val WEAPONS_ID = 0
+        val ARMORS_ID = 1
+        val MONSTERS_ID = 2
+    }
+
+    private var needsRefresh: Int? = null
 
     private val TAB_TITLES = arrayOf(
         "WEAPONS",
         "ARMORS",
         "MONSTERS"
-)
+    )
 
     override fun getItem(position: Int): Fragment {
-        return when(position){
-            0 ->WeaponsFragment()
-            1 ->ArmorsFragment()
-            2 ->MonstersFragment()
+        return when (position) {
+            WEAPONS_ID -> WeaponsFragment()
+            ARMORS_ID -> ArmorsFragment()
+            MONSTERS_ID -> MonstersFragment()
             else -> throw IllegalStateException("There is onyl 3 tabs")
         }
     }
@@ -33,6 +41,20 @@ class SectionPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIO
 
     override fun getCount(): Int {
         return TAB_TITLES.size
+    }
+
+    override fun getItemPosition(fragment: Any): Int {
+        if (fragment is WeaponsFragment && needsRefresh == WEAPONS_ID) {
+            fragment.refreshData()
+        } else if (fragment is ArmorsFragment && needsRefresh == ARMORS_ID) {
+        } else if (fragment is MonstersFragment && needsRefresh == MONSTERS_ID) {
+
+        }
+        return super.getItemPosition(fragment)
+    }
+
+    fun refreshData(currentFragment: Int) {
+        needsRefresh = currentFragment
     }
 
 

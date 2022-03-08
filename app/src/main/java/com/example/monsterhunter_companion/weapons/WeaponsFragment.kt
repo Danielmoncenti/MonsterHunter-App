@@ -7,24 +7,37 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.monsterhunter_companion.R
+import com.example.monsterhunter_companion.data.Weapons
 import com.example.monsterhunter_companion.data.WeaponsList
+import com.example.monsterhunter_companion.databinding.FragmentWeaponsBinding
+import com.example.monsterhunter_companion.databinding.FragmentWeaponsListBinding
 
-class WeaponsFragment : Fragment()   {
+class WeaponsFragment : Fragment() {
+
+    private var weaponsToShow = ArrayList<Weapons>()
+    private var weaponsFilters = ArrayList<String>()
+
+    lateinit var binding: FragmentWeaponsListBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view =inflater.inflate(R.layout.fragment_weapons_list,container,false)
+    ): View {
 
-        if(view is RecyclerView){
-            context?.let {
+        binding = FragmentWeaponsListBinding.inflate(inflater)
+        weaponsToShow = WeaponsList
 
-                view.adapter=WeaponsRecycleViewAdapter(it, WeaponsList)
-            }?:activity?.finish()
+        context?.let {
+            binding.weaponList.adapter = WeaponsRecycleViewAdapter(it, weaponsToShow)
+        } ?: activity?.finish()
 
-        }
-        return view
+
+        return binding.root
     }
+
+    fun refreshData() {
+        binding.weaponList.adapter?.notifyDataSetChanged()
+    }
+
 }
