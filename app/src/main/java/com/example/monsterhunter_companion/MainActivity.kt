@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
             val dialog = FiltersDialog(this, dialogLayout) { filtros ->
 
-
             }
 
 
